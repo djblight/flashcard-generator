@@ -1,9 +1,9 @@
-const Rx = require('rx');
+const Rx = require('Rx');
 const inquirer = require('inquirer');
 const BasicCard = require('./basic-card');
 const ClozeCard = require('./cloze-card');
 const question = require('./questions');
-const helper = require('./helper');
+const helper = require('./constructor');
 
 // question path
 const questions$ = new Rx.BehaviorSubject(question.whatDoYouWant);
@@ -35,7 +35,7 @@ const createdCards$ = Rx.Observable.merge(createBasicCards$, createClozeCards$)
 
 const initialCards$ = Rx.Observable.of([
     new BasicCard('Who was the first president of the United States?', 'George Washington'),
-    new ClozeCard('Jupiter is the biggest planet.', 'Jupiter')
+    new ClozeCard('Dont mess with Texas.', 'Texas')
   ]);
 
 const totalCards$ = initialCards$
